@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get;  private set; }
+    public static GameManager Instance { get; private set; }
 
     public CardList ParentCardList;
     public CardList ChildCardList;
     public List<GameObject> ParentCards;
 
     public UIPanel Panel;
-    public UIDesctiption Description;
+    public UIDescription Description;
     public GameObject Clear;
+    public UISceneManager Fade;
 
     public int Stage;
     public int MaxStage = 6;
@@ -50,12 +50,18 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(3);
 
-        Clear.SetActive(false);
         ParentCardList.InitializeCards();
         ChildCardList.InitializeCards();
         Panel.ResetAllTexts();
 
-        if (Stage == 6) yield break;
+        if (Stage == 6)
+        {
+            Fade.StartResult();
+            yield break;
+        }
+
+        Clear.SetActive(false);
+
         StartCoroutine(GameSystem());
     }
 

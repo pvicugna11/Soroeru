@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UIDesctiption : MonoBehaviour
+public class UIDescription : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI stageText;
     [SerializeField] private TextMeshProUGUI levelText;
