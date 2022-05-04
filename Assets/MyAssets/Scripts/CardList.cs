@@ -13,6 +13,19 @@ public class CardList : MonoBehaviour
         Cards = new List<GameObject>();
     }
 
+    private void AddCard(GameObject card)
+    {
+        Cards.Add(card);
+        SortCards();
+        card.SetActive(true);
+    }
+
+    private void RemoveCard(GameObject card)
+    {
+        Cards.Remove(card);
+        card.SetActive(false);
+    }
+
     public void HandleCard(GameObject card)
     {
         if (card.activeSelf)
@@ -23,19 +36,6 @@ public class CardList : MonoBehaviour
         {
             AddCard(card);
         }
-    }
-
-    public void AddCard(GameObject card)
-    {
-        Cards.Add(card);
-        SortCards();
-        card.SetActive(true);
-    }
-
-    public void RemoveCard(GameObject card)
-    {
-        Cards.Remove(card);
-        card.SetActive(false);
     }
 
     public void InitializeCards()

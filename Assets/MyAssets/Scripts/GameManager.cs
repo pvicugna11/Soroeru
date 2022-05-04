@@ -1,43 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get;  private set; }
+
     public CardList ParentCardList;
     public CardList ChildCardList;
-
     public List<GameObject> ParentCards;
 
+    public UIPanel Panel;
+    public UIDesctiption Description;
+    public GameObject Clear;
+
     public int Stage;
+    public int MaxStage = 6;
 
     private void Start()
     {
+        if (Instance)
+        {
+            Destroy(Instance);
+            return;
+        }
+
+        Instance = this;
+
         StartCoroutine(GameSystem());
     }
 
     private IEnumerator GameSystem()
     {
         Stage++;
+
+        Description.ShowDescription(true);
+
+        yield return new WaitForSeconds(3);
+
+        Description.ShowDescription(false);
+        Panel.gameObject.SetActive(true);
         GenerateRandomStage();
 
-        while (!IsGameClear())
-        {
-            yield return null;
-        }
+        yield return new WaitUntil(() => IsGameClear());
 
-        Debug.Log("Clear");
+        Panel.gameObject.SetActive(false);
+        Clear.SetActive(true);
 
-        yield return new WaitUntil(() => Input.GetMouseButton(0));
+        yield return new WaitForSeconds(3);
 
+        Clear.SetActive(false);
         ParentCardList.InitializeCards();
         ChildCardList.InitializeCards();
+        Panel.ResetAllTexts();
 
         if (Stage == 6) yield break;
         StartCoroutine(GameSystem());
     }
 
-    private int Level()
+    public int Level()
     {
         if (Stage < 4)
         {
@@ -59,7 +81,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < Level(); ++i)
         {
-            ParentCardList.AddCard(ParentCards[i]);
+            ParentCardList.HandleCard(ParentCards[i]);
         }
     }
 
