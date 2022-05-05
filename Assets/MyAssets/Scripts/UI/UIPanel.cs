@@ -6,6 +6,8 @@ using TMPro;
 public class UIPanel : MonoBehaviour
 {
     private List<TextMeshProUGUI> texts;
+    public TextMeshProUGUI SelectNumText;
+    public TextMeshProUGUI LevelText;
 
     private void Awake()
     {
@@ -33,6 +35,8 @@ public class UIPanel : MonoBehaviour
         {
             texts[i].SetText($"{i + 1}");
         }
+
+        SelectNumText.SetText($"{texts.Count}");
     }
 
     public void ResetAllTexts()
@@ -41,7 +45,8 @@ public class UIPanel : MonoBehaviour
         {
             text.SetText("");
         }
-
         texts = new List<TextMeshProUGUI>();
+
+        SelectNumText.SetText("0");
     }
 }

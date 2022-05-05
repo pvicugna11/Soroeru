@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         Description.ShowDescription(false);
+        Panel.LevelText.SetText($"{Level()}");
         Panel.gameObject.SetActive(true);
         GenerateRandomStage();
 
