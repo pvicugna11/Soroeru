@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     public GameObject Clear;
     public UISceneManager Fade;
 
+    public AudioManager Audio;
+    public AudioClip ClearClip;
+    public float ClearClipVolume;
+
     public int Stage;
     public int MaxStage = 6;
 
@@ -46,6 +50,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => IsGameClear());
 
         Panel.gameObject.SetActive(false);
+        Audio.PlayOneShot(ClearClip, ClearClipVolume);
         Clear.SetActive(true);
 
         yield return new WaitForSeconds(3);

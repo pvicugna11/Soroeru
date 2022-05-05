@@ -1420,6 +1420,31 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 11400000, guid: e296df346213144448076d03067a8d62, type: 2}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SetVolume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: e296df346213144448076d03067a8d62, type: 2}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2d74f029acd2040489cb60fa950094af,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1109249926}
         m_TargetAssemblyTypeName: UISceneManager, Assembly-CSharp
         m_MethodName: StartTitle
@@ -1441,11 +1466,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4574419886049662617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 454b154c1953fef47abbbe15acbb4182, type: 3}
+  m_Script: {fileID: 11500000, guid: 1783a1f509e1c5b4bb3b5445c9883d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AlphaModifiers: 0.5
   ButtonMaterial: {fileID: 2100000, guid: ac32e3118c1c2644ba61e8e548cf114e, type: 2}
+  Audio: {fileID: 11400000, guid: e296df346213144448076d03067a8d62, type: 2}
+  Clip: {fileID: 8300000, guid: 513417aae3d56384d945d5b4e4c4fc1b, type: 3}
+  ClipVolume: 3
 --- !u!1001 &7405304785558853215
 PrefabInstance:
   m_ObjectHideFlags: 0

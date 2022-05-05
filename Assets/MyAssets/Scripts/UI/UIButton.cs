@@ -5,7 +5,6 @@ using UnityEngine;
 public class UIButton : MonoBehaviour
 {
     public float AlphaModifiers;
-
     public Material ButtonMaterial;
 
     private void Update()
